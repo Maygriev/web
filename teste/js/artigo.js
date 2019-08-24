@@ -15,6 +15,8 @@ bt.addEventListener("click", function(event){
   event.preventDefault();
   var tbody = document.querySelector("tbody");
   console.log(tbody);
+  xhr.send();
+
 })
 
 function obterObjeto(objeto){
@@ -24,6 +26,6 @@ function obterObjeto(objeto){
         data : objeto.data,
         texto : objeto.texto
       };
-      
+
     return objeto;
 }
