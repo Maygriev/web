@@ -2,9 +2,7 @@ $(document).ready(function(){
   $.get(
     "https://tads-kitchen.herokuapp.com",
     function(data) {
-      for (var i = 0; i < data.length; i++) {
-        $("ul").append(createLI(data[i]));
-      }
+      populaUL(data);
     }
   );
 });
@@ -14,4 +12,10 @@ function createLI(conteudo) {
   li.textContent = "ID: " + conteudo.id + " - Nome: " + conteudo.name;
   li.classList.add("list-group-item");
   return li;
+}
+
+function populaUL(array) {
+  for (var i = 0; i < array.length; i++) {
+    $("ul").append(createLI(array[i]));
+  }
 }
