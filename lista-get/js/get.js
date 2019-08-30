@@ -1,11 +1,16 @@
-$(document).ready(function(){
+var ultID = 1;
+var urlBase = "https://tads-kitchen.herokuapp.com/byid/";
+var myVar = setInterval(atualizaDados, 5000);
+
+function atualizaDados() {
   $.get(
-    "https://tads-kitchen.herokuapp.com",
+    (urlBase+ultID),
     function(data) {
       populaUL(data);
+      ultID += data.length;
     }
   );
-});
+}
 
 function criarLI(conteudo, classe) {
   var li = document.createElement("li");
