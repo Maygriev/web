@@ -7,7 +7,7 @@ $(document).ready(function(){
   );
 });
 
-function createLI(conteudo, classe) {
+function criarLI(conteudo, classe) {
   var li = document.createElement("li");
   li.textContent = "ID: " + conteudo.id + " - Nome: " + conteudo.name;
   li.classList.add(classe);
@@ -16,6 +16,7 @@ function createLI(conteudo, classe) {
 
 function populaUL(array) {
   for (var i = 0; i < array.length; i++) {
-    $("ul").append(createLI(array[i], "list-group-item"));
+    var obj = criarLI(array[i], "list-group-item");
+    $("ul").append(obj);
   }
 }
