@@ -1,10 +1,27 @@
 var ultID = 1;
-var urlBase = "https://tads-kitchen.herokuapp.com/byid/";
-var myVar = setInterval(atualizaDados, 5000);
+var urlGET = "https://tads-kitchen.herokuapp.com/byid/";
+var urlPOST = "https://tads-kitchen.herokuapp.com/cookers";
+
+$("#InsereElemento").on("click", function(){
+  adicionaCozinheiro();
+});
+
+$("#AtualizaLista").on("click", function(){
+  atualizaDados();
+});
+
+function adicionaCozinheiro(){
+  var nomeCozinheiro = $("#cookName")[0].value;
+  var obj = JSON.stringify({name : nomeCozinheiro});
+  $.post(
+    urlPOST,
+    obj
+  );
+}
 
 function atualizaDados() {
   $.get(
-    (urlBase+ultID),
+    (urlGET+ultID),
     function(data) {
       populaUL(data);
       ultID += data.length;
