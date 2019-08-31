@@ -3,6 +3,8 @@ var urlGET = "https://tads-kitchen.herokuapp.com/byid/";
 var urlPOST = "https://tads-kitchen.herokuapp.com/cookers";
 var meuTeste = setInterval(checaDados, 5000);
 
+checaDados();
+
 $("#InsereElemento").on("click", function(){
   adicionaCozinheiro();
 });
@@ -19,6 +21,7 @@ function adicionaCozinheiro(){
     obj
   );
   $("#cookName")[0].value = "";
+  checaDados();
 }
 
 function checaDados() {
@@ -28,6 +31,7 @@ function checaDados() {
       atualizaNotify(data);
     }
   );
+  checaDados();
 }
 
 function atualizaNotify(data) {
