@@ -31,7 +31,6 @@ function checaDados() {
       atualizaNotify(data);
     }
   );
-  checaDados();
 }
 
 function atualizaNotify(data) {
@@ -47,6 +46,7 @@ function atualizaDados() {
       ultID += data.length;
     }
   );
+  checaDados();
 }
 
 function criarLI(conteudo, classe) {
