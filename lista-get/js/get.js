@@ -22,6 +22,6 @@ function criarLI(conteudo, classe) {
 function populaUL(array) {
   for (var i = 0; i < array.length; i++) {
     var obj = criarLI(array[i], "list-group-item");
-    $("ul").prepend(obj);
+    $("#lista").prepend(obj);
   }
 }
