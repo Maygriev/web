@@ -3,8 +3,6 @@ var urlGET = "https://tads-kitchen.herokuapp.com/byid/";
 var urlPOST = "https://tads-kitchen.herokuapp.com/cookers";
 var meuTeste = setInterval(checaDados, 5000);
 
-checaDados();
-
 $("#InsereElemento").on("click", function(){
   adicionaCozinheiro();
 });
@@ -24,13 +22,9 @@ function adicionaCozinheiro(){
   checaDados();
 }
 
-function checaDados() {
-  $.get(
-    (urlGET+ultID),
-    function(data) {
-      atualizaNotify(data);
-    }
-  );
+function zeraNotify() {
+  var zerador = [];
+  atualizaNotify(zerador);
 }
 
 function atualizaNotify(data) {
@@ -46,7 +40,16 @@ function atualizaDados() {
       ultID += data.length;
     }
   );
-  checaDados();
+  zeraNotify();
+}
+
+function checaDados() {
+  $.get(
+    (urlGET+ultID),
+    function(data) {
+      atualizaNotify(data);
+    }
+  );
 }
 
 function criarLI(conteudo, classe) {
