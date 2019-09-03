@@ -32,22 +32,22 @@ function atualizaNotify(data) {
   $("#notify")[0].textContent = novoValor;
 }
 
-function atualizaDados() {
-  $.get(
-    (urlGET+ultID),
-    function(data) {
-      populaUL(data);
-      ultID += data.length;
-    }
-  );
-  zeraNotify();
-}
-
 function checaDados() {
   $.get(
     (urlGET+ultID),
     function(data) {
       atualizaNotify(data);
+    }
+  );
+}
+
+function atualizaDados() {
+  $.get(
+    (urlGET+ultID),
+    function(data) {
+      preencherLista(data);
+      ultID += data.length;
+      zeraNotify();
     }
   );
 }
@@ -59,9 +59,9 @@ function criarLI(conteudo, classe) {
   return li;
 }
 
-function populaUL(array) {
+function preencherLista(array) {
   for (var i = 0; i < array.length; i++) {
     var obj = criarLI(array[i], "list-group-item");
-    $("#lista").prepend(obj);
+    $("#lista")[0].prepend(obj);
   }
 }
