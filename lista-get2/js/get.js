@@ -1,6 +1,7 @@
 var urlGET = "https://tads-kitchen.herokuapp.com/posts";
 
 $("#AtualizaLista").on("click", function(){
+  esvaziaLista();
   atualizaDados();
 });
 
@@ -11,6 +12,10 @@ function atualizaDados() {
       preencheLista(data);
     }
   );
+}
+
+function esvaziaLista() {
+  $("#lista").empty();
 }
 
 function preencheLista(data) {
@@ -27,9 +32,10 @@ function criaItem(data) {
   ancora.classList.add("list-group-item-action")
   var final;
 
-  final = "<div class='d-flex w-100 justify-content-between'>\n<h5 class='mb-1'>" + data.title + "</h5>\n";
-  final += "<small>" + data.time + "</small>";
-  final += "</div>\n<p class='mb-1'>" + data.text + "</p>\n";
+  final = "<div class='d-flex w-100 justify-content-between'>";
+  final += "<h5 class='mb-1'>" + data.title + "</h5>";
+  final += "<small>" + data.time + "</small></div>";
+  final += "<p class='mb-1'>" + data.text + "</p>";
   final += "<small>" + data.author + "</small>";
 
   ancora.innerHTML = final;
