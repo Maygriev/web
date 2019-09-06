@@ -41,23 +41,26 @@ function preencheLista(data) {
   var lista = $("#lista")[0];
   for (var i = 0; i < data.length; i++) {
     var item = criaItem(data[i]);
-    lista.prepend(item);
+    lista.innerHTML = item + lista.innerHTML;
   }
 }
 
 function criaItem(data) {
-  var ancora = document.createElement("a");
-  ancora.classList.add("list-group-item");
-  ancora.classList.add("list-group-item-action")
-  var final;
+  var string = "";
 
-  final = "<div class='d-flex w-100 justify-content-between'>";
-  final += "<h5 class='mb-1'>" + data.title + "</h5>";
-  final += "<small class = 'hora'>" + moment(data.time, "DDMMYYYY").fromNow() + "</small></div>";
-  final += "<p class='mb-1'>" + data.text + "</p>";
-  final += "<small>" + data.author + "</small>";
+  string = template(data.title, moment(data.time, "DDMMYYYY").fromNow(), data.text, data.author);
 
-  ancora.innerHTML = final;
+  return string;
+}
 
-  return ancora;
+function template(title, time, text, author) {
+  return `
+  <a href="#" class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">${title}</h5>
+      <small class="text-muted hora">${time}</small>
+    </div>
+    <p class="mb-1">${text}</p>
+    <small class="text-muted">${author}</small>
+  </a>`
 }
