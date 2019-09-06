@@ -1,5 +1,6 @@
 var urlGET = "https://tads-kitchen.herokuapp.com/posts";
 var test = setInterval(temporizador, 1000);
+moment.locale("pt-br");
 
 $("#AtualizaLista").on("click", function(){
   esvaziaLista();
@@ -16,8 +17,8 @@ function temporizador() {
 }
 
 function atualizaHora(data) {
-  moment.locale("pt-br");
   var hora = $(".hora");
+  var teste = "";
   for (var i = 0; i < hora.length; i++) {
     var j = hora.length - i - 1;
     hora[j].innerHTML = moment(data[i].time, "DDMMYYYY").fromNow();
@@ -39,10 +40,10 @@ function esvaziaLista() {
 
 function preencheLista(data) {
   var lista = $("#lista")[0];
-  for (var i = 0; i < data.length; i++) {
-    var item = criaItem(data[i]);
+  data.map(function(dado){
+    var item = criaItem(dado);
     lista.innerHTML = item + lista.innerHTML;
-  }
+  });
 }
 
 function criaItem(data) {
