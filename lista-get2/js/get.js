@@ -48,8 +48,9 @@ function preencheLista(data) {
 
 function criaItem(data) {
   var string = "";
+  var dtCreate = moment(data.time, "DDMMYYYY").fromNow();
 
-  string = template(data.title, moment(data.time, "DDMMYYYY").fromNow(), data.text, data.author);
+  string = template(data.title, dtCreate , data.text, data.author);
 
   return string;
 }
